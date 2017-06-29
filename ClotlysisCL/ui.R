@@ -100,8 +100,11 @@ fluidPage(
       ),
       
       conditionalPanel(condition="input.tabselected==4",
-                       helpText(h4("Please cite this page if you find it useful, Longstaff C, 2016, Shiny App for calculating clot lysis times, version 0.9
-               URL address, last accessed", Sys.Date()))
+                       helpText(h5("Please cite this page if you find it useful, Longstaff C, Development of a Shiny app tool to simplify and standardize the analysis 
+                                   of hemostasis assay data: 
+                                   communication from the SSC of the ISTH, J Thromb Haemost, 15: 1044-6, 2017.  DOI 10.1111/jth.13656")),
+                       tags$br(),
+                       helpText(h5("Version 0.90.1, last accessed", Sys.Date()))
                        
       )
      

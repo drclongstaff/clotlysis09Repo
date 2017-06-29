@@ -60,18 +60,18 @@ function(input, output){
     dataCols=length(plate1[1,]) #tests the width of the data, usually 96 columns
     RowNum<-input$numrows 
     
-    vect1<-1:dataCols #make dummy vectors for later data
-    vect2<-1:dataCols
-    vect3<-1:dataCols
-    vect4<-1:dataCols
-    vect5<-1:dataCols
-    vect6<-1:dataCols
-    vect7<-1:dataCols
-    vect8<-1:dataCols
-    vect9<-1:dataCols
-    vect10<-1:dataCols
-    vect11<-1:dataCols
-    vectz<-1:dataCols
+    vect1<-NULL #make dummy vectors for later data
+    vect2<-NULL
+    vect3<-NULL
+    vect4<-NULL
+    vect5<-NULL
+    vect6<-NULL
+    vect7<-NULL
+    vect8<-NULL
+    vect9<-NULL
+    vect10<-NULL
+    vect11<-NULL
+    vectz<-NULL
     
     pointsnum<-length(plate1[,1])-1
     
@@ -90,7 +90,7 @@ function(input, output){
       
       
       yimax<-max(yi)    #max absorbance
-      pointmax<-which(yi==yimax)[1] #reading for max absorbances
+      pointmax<-which.max(yi) #reading for max absorbances
       clotTime<-Time[c(1:pointmax)] #vector of time to max
       clotAbs<-yi[c(1:pointmax)]  #vector of absorbances to max
       lysTimeall<-Time[-c(1:pointmax)] #vector of all lysis Time
@@ -114,8 +114,8 @@ function(input, output){
       yiD1<-diff(yi)
       TimeD1<-Time[-1]
       
-      timeMaxD1<-TimeD1[which(yiD1==max(yiD1))][1]
-      timeMinD1<-TimeD1[which(yiD1==min(yiD1))][1]
+      timeMaxD1<-TimeD1[which.max(yiD1)]
+      timeMinD1<-TimeD1[which.min(yiD1)]
       
       vect1[i]<-MaxAbs         		#max Abs
       vect2[i]<-MaxTime         #time to max Abs
@@ -168,18 +168,18 @@ function(input, output){
   dataCols=length(plate1[1,]) #tests the width of the data, usually 96 columns
   RowNum<-input$numrows 
   
-  vect1<-1:dataCols #make dummy vectors for later data
-  vect2<-1:dataCols
-  vect3<-1:dataCols
-  vect4<-1:dataCols
-  vect5<-1:dataCols
-  vect6<-1:dataCols
-  vect7<-1:dataCols
-  vect8<-1:dataCols
-  vect9<-1:dataCols
-  vect10<-1:dataCols
-  vect11<-1:dataCols
-  vectz<-1:dataCols
+  vect1<-NULL #make dummy vectors for later data
+  vect2<-NULL
+  vect3<-NULL
+  vect4<-NULL
+  vect5<-NULL
+  vect6<-NULL
+  vect7<-NULL
+  vect8<-NULL
+  vect9<-NULL
+  vect10<-NULL
+  vect11<-NULL
+  vectz<-NULL
   
   pointsnum<-length(plate1[,1])-1
   
@@ -197,7 +197,7 @@ function(input, output){
            "min abs + offset below"=minAbs<-min(yi)+input$offset)
     
     yimax<-max(yi)    #max absorbance
-    pointmax<-which(yi==yimax)[1] #reading for max absorbances
+    pointmax<-which.max(yi) #reading for max absorbances
     clotTime<-Time[c(1:pointmax)] #vector of time to max
     clotAbs<-yi[c(1:pointmax)]  #vector of absorbances to max
     lysTimeall<-Time[-c(1:pointmax)] #vector of all lysis Time
@@ -220,8 +220,8 @@ function(input, output){
     yiD1<-diff(yi)
     TimeD1<-Time[-1]
     
-    timeMaxD1<-TimeD1[which(yiD1==max(yiD1))][1]
-    timeMinD1<-TimeD1[which(yiD1==min(yiD1))][1]
+    timeMaxD1<-TimeD1[which.max(yiD1)]
+    timeMinD1<-TimeD1[which.min(yiD1)]
     
     vect1[i]<-MaxAbs        		#max Abs
     vect2[i]<-MaxTime         #time to max Abs
@@ -295,8 +295,8 @@ function(input, output){
     yiD1ch<-sign(yiD1)==sign(yiD1[+1])
     TimeD1<-Time[-1]
     
-    timeMaxD1<-TimeD1[which(yiD1==max(yiD1))][1]
-    timeMinD1<-TimeD1[which(yiD1==min(yiD1))][1]
+    timeMaxD1<-TimeD1[which.max(yiD1)]
+    timeMinD1<-TimeD1[which.min(yiD1)]
     time0D1<-TimeD1[which(yiD1==FALSE)][1]
     
     lysPoint<-input$num
@@ -307,7 +307,7 @@ function(input, output){
            "min abs + offset below"=minAbs<-min(yi)+input$offset)
     
     yimax<-max(yi)    #max absorbance
-    pointmax<-which(yi==yimax)[1] #reading for max absorbances
+    pointmax<-which.max(yi) #reading for max absorbances
     clotTime<-Time[c(1:pointmax)] #vector of time to max
     clotAbs<-yi[c(1:pointmax)]  #vector of absorbances to max
     lysTimeall<-Time[-c(1:pointmax)] #vector of all lysis Time
@@ -394,12 +394,12 @@ function(input, output){
     yiD1ch<-sign(yiD1)==sign(yiD1[+1])
     TimeD1<-Time[-1]
     
-    timeMaxD1<-TimeD1[which(yiD1==max(yiD1))][1]
-    timeMinD1<-TimeD1[which(yiD1==min(yiD1))][1]
+    timeMaxD1<-TimeD1[which.max(yiD1)]
+    timeMinD1<-TimeD1[which.min(yiD1)]
     time0D1<-TimeD1[which(yiD1==FALSE)][1]
     
     yimax<-max(yi)    #max absorbance
-    pointmax<-which(yi==yimax)[1] #reading for max absorbances
+    pointmax<-which.max(yi) #reading for max absorbances
     clotTime<-Time[c(1:pointmax)] #vector of time to max
     clotAbs<-yi[c(1:pointmax)]  #vector of absorbances to max
     lysTimeall<-Time[-c(1:pointmax)] #vector of all lysis Time
